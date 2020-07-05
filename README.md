@@ -14,9 +14,13 @@ You need clang or gcc >=4.7. You also need to install:
 
     sudo apt-get install build-essential libpng12-dev libjpeg-dev \
         libfreetype6-dev libavformat-dev libavcodec-dev \
-        libswscale-dev libgflags-dev libgoogle-glog-dev
+        libswscale-dev libgflags-dev libgoogle-glog-dev ragel
 
 ## Installation
+
+    wget https://github.com/jart/hiptext/releases/download/0.2/hiptext-0.2.tar.gz
+    tar xvzf hiptext-0.2.tar.gz
+    cd hiptext-0.2
 
     ./configure
     make -j4
