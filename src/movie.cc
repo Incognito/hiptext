@@ -61,8 +61,8 @@ void Movie::PrepareRGB(int width, int height) {
       << "Could not open codec.\n";
 
   // Allocate Raw + RGB frame buffers.
-  CHECK(frame_ = avcodec_alloc_frame());
-  CHECK(frame_rgb_ = avcodec_alloc_frame());
+  CHECK(frame_ = av_frame_alloc());
+  CHECK(frame_rgb_ = av_frame_alloc());
   int rgb_bytes = avpicture_get_size(AV_PIX_FMT_RGB24, width_, height_);
   buffer_ = static_cast<uint8_t*>(av_malloc(rgb_bytes));
   LOG(INFO) << "RGB Buffer: " << rgb_bytes << " bytes.";
@@ -91,7 +91,7 @@ Graphic Movie::Next() {
     if (packet.stream_index == video_stream_) {
       avcodec_decode_video2(context_, frame_, &found, &packet);
     }
-    av_free_packet(&packet);
+    av_packet_unref(&packet);
   }
 
   // Convert Raw to RGB.
