@@ -1,6 +1,6 @@
 language: cpp
 
-dist: trusty
+dist: bionic
 addons:
   apt:
     packages:
@@ -8,6 +8,7 @@ addons:
       - libavformat-dev
       - libfreetype6-dev
       - libgflags-dev
+      - libgflags2.2
       - libgoogle-glog-dev
       - libjpeg-dev
       - libpng12-dev
